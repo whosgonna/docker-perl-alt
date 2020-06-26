@@ -1,5 +1,5 @@
 ## The Runtime version
-FROM alpine:3.9 AS runtime
+FROM alpine:latest AS runtime
 
 RUN apk --no-cache add curl wget perl make ca-certificates zlib libressl \
                        zlib expat gnupg libxml2 libxml2-utils jq         \
