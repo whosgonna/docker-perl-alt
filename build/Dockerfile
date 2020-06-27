@@ -11,7 +11,3 @@ RUN apk --no-cache add build-base zlib-dev perl-dev libressl-dev \
 
 USER perl
 
-## NOTE
-## use cpm to install modules with the -g flag.
-
-
