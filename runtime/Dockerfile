@@ -1,5 +1,5 @@
 ## The Runtime version
-FROM alpine:latest AS runtime
+FROM alpine:latest 
 
 ## Prepare the image:
 ##      1. Adding things we need for a minimum viable image:  Maybe this is open for
@@ -30,21 +30,5 @@ ENV PERL_MM_OPT=INSTALL_BASE=/home/perl/perl5
 ENV PATH=/home/perl/perl5/bin:$PATH
 
 
-
-## Create the build version from the runtime version.  This mostly involves
-## adding dev packages for installing additional libraries.
-FROM runtime AS build
-
-## Switch to root to install our dev packages so we can compile XS modules,
-## SSL modules, etc
-USER root
-RUN apk --no-cache add build-base zlib-dev perl-dev libressl-dev \
-                       expat-dev libxml2-dev perl-test-harness-utils \
-                       openssl-dev
-
-USER perl
-
 ## NOTE
 ## use cpm to install modules with the -g flag.
-
-
